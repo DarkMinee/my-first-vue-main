@@ -13,7 +13,7 @@ var firebaseConfig = {
   messagingSenderId: "793288807216",
   appId: "1:793288807216:web:77700f6ea256f2ff3d2ef5"
 };
-// Initialize Firebase
+
 firebase.initializeApp(firebaseConfig);
 
 Vue.config.productionTip = false

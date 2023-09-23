@@ -1,5 +1,5 @@
 <template>
-    <button @click="googleSignOut">
+    <button class="btn btn-outline-danger" @click="googleSignOut">
         Esci
     </button>
 </template>
