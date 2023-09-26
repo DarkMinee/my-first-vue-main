@@ -22,6 +22,13 @@ service cloud.firestore {
   }
 }
 ```
+- Tornare su dati > creare una nuova raccolta denominata 'data' e all'interno un nuovo documento con id generato automaticamente
+- Infine aggiungere quanti documenti si vuole con gli attributi:
+  - "img" di tipo String
+  - "title" di tipo String
+  - "desc" di tipo String
+  - "tags" di tipo Array con all'interno valori di tipo String a piacere
+
 Passare all'installazione del progetto
 
 ## Installazione progetto
