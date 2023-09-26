@@ -18,30 +18,40 @@
                 </div>
             </div>
         </li>
-        <div class="container mt-3" v-for="(item, index) in data">
+        <!-- <div class="container mt-3" v-for="(item, index) in currentDocs">
             {{ index }} - {{ item }}
-        </div>
+        </div> -->
+        <li ref="currentDocs"></li>
     </div>
 </template>
 
+<script setup>
+    import { onMounted } from 'vue'
+    onMounted(async () => {
+        await getDocs(collection(db, 'data')).then((docs) => {
+            docs.forEach((doc) => {
+                console.log(doc.id, " => ", doc.data());
+                //this.currentDocs[doc.id] = doc.data();
+            });
+        })
+    })
+</script>
+
 <script>
-    import firebase from "firebase";
-    import SignOut from '@/components/SignOut';
-    import Item from '@/components/Item';
+    import { collection, getDocs } from 'firebase/firestore'
+    import { db } from '@/main.js'
+    import SignOut from '@/components/SignOut.vue';
+    import Item from '@/components/Item.vue';
     export default {
         name: 'Home',
+        data() {
+            return {
+                currentDocs : []
+            }
+        },
         components: {
             SignOut,
             Item
-        },
-        data: {
-            docs: ''
-        },
-        created() {
-            const db = firebase.firestore();
-            db.collection('data').get().then(function(docs){
-                data.docs = docs
-            })
         }
     }
 </script>

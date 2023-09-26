@@ -5,14 +5,11 @@
 </template>
 
 <script>
-    import firebase from "firebase";
+    import { getAuth, signOut } from "firebase/auth";
     export default {
-        name: 'SignOut',
         methods: {
             googleSignOut: function() {
-                firebase
-                .auth()
-                .signOut()
+                signOut(getAuth())
                 .then(() => {
                     this.$router.push('/')
                     alert("Sei uscito!");
